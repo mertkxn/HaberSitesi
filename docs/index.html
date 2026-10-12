@@ -1,0 +1,821 @@
+﻿<!DOCTYPE html>
+<html lang="tr" data-bs-theme="auto">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ana Sayfa - SON GÜN</title>
+    
+    <!-- Theme Auto-Detector for Bootstrap 5 -->
+    <script>
+        (function () {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-bs-theme', prefersDark ? 'dark' : 'light');
+        })();
+    </script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/site.css" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header data-aos="fade-down">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-custom border-bottom box-shadow mb-4 shadow">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="images/logo.png" alt="Logo" class="brand-logo" onerror="this.style.display='none'" />
+                    SON GÜN
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation" style="border-color: white;">
+                    <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Ana Sayfa</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container flex-grow-1">
+        <main role="main" class="pb-5">
+<div class="text-center mb-4" data-aos="zoom-in">
+    <h1 class="display-4 fw-bold theme-heading">SON GÜN</h1>
+    <p class="lead text-muted-custom">Tarihin en kritik dönüm noktaları, gizemli ölümler ve son anlar...</p>
+    <hr class="w-50 mx-auto theme-divider" />
+</div>
+
+<!-- Kategori Filtreleme Butonları -->
+<div class="d-flex flex-wrap justify-content-center gap-2 mb-4" data-aos="fade-up">
+    <button type="button" class="btn btn-sm rounded-pill px-3 py-2 btn-light text-dark fw-bold filter-btn active" data-category="all">
+        <i class="fas fa-layer-group me-1"></i> Tümü
+    </button>
+    <button type="button" class="btn btn-sm rounded-pill px-3 py-2 btn-outline-secondary filter-btn" 
+            data-category="1" data-category-name="Suikast" title="Tarihi ve siyasi fig&#xFC;rlere y&#xF6;nelik planl&#x131; silahl&#x131; veya bombal&#x131; sald&#x131;r&#x131;lar sonucu ger&#xE7;ekle&#x15F;en &#xF6;l&#xFC;mler.">
+        <i class="fas fa-tag me-1"></i> Suikast
+    </button>
+    <button type="button" class="btn btn-sm rounded-pill px-3 py-2 btn-outline-secondary filter-btn" 
+            data-category="2" data-category-name="Zehirlenme" title="Kas&#x131;tl&#x131; veya &#x15F;&#xFC;pheli toksik maddeler, kimyasallar ve zehirler ile meydana gelen &#xF6;l&#xFC;mler.">
+        <i class="fas fa-tag me-1"></i> Zehirlenme
+    </button>
+    <button type="button" class="btn btn-sm rounded-pill px-3 py-2 btn-outline-secondary filter-btn" 
+            data-category="3" data-category-name="&#x130;ntihar" title="Tarihe y&#xF6;n vermi&#x15F; &#xF6;nemli &#x15F;ahsiyetlerin kendi hayatlar&#x131;na son vermesi olaylar&#x131;.">
+        <i class="fas fa-tag me-1"></i> &#x130;ntihar
+    </button>
+    <button type="button" class="btn btn-sm rounded-pill px-3 py-2 btn-outline-secondary filter-btn" 
+            data-category="4" data-category-name="&#x15E;&#xFC;pheli &#xD6;l&#xFC;m ve Kazalar" title="Gizemi tam ayd&#x131;nlat&#x131;lamayan trajik kazalar ve arkas&#x131;nda soru i&#x15F;aretleri b&#x131;rakan &#x15F;&#xFC;pheli vefatlar.">
+        <i class="fas fa-tag me-1"></i> &#x15E;&#xFC;pheli &#xD6;l&#xFC;m ve Kazalar
+    </button>
+    <button type="button" class="btn btn-sm rounded-pill px-3 py-2 btn-outline-secondary filter-btn" 
+            data-category="5" data-category-name="&#x130;dam ve Yarg&#x131;lama" title="D&#xF6;nemin hukuki, siyasi veya devrim mahkemelerinin infaz kararlar&#x131;yla hayat&#x131; sonlananlar.">
+        <i class="fas fa-tag me-1"></i> &#x130;dam ve Yarg&#x131;lama
+    </button>
+    <button type="button" class="btn btn-sm rounded-pill px-3 py-2 btn-outline-secondary filter-btn" 
+            data-category="6" data-category-name="Hastal&#x131;k ve Do&#x11F;al Nedenler" title="Salg&#x131;nlar, mesleki maruziyetler veya amans&#x131;z hastal&#x131;klar nedeniyle ya&#x15F;anan tarihi kay&#x131;plar.">
+        <i class="fas fa-tag me-1"></i> Hastal&#x131;k ve Do&#x11F;al Nedenler
+    </button>
+</div>
+
+<div id="filterAlert" class="alert alert-dark border-secondary d-none justify-content-between align-items-center mb-4">
+    <span><i class="fas fa-filter text-danger me-2"></i><strong id="filterCategoryText"></strong> kategorisindeki haberler gösteriliyor.</span>
+    <button type="button" id="clearFilterBtn" class="btn btn-sm btn-outline-light">Filtreyi Temizle</button>
+</div>
+
+<div class="row" id="newsContainer">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="6" data-aos="fade-up" data-aos-delay="0">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/marie_curie.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="Bilim U&#x11F;runa Adanm&#x131;&#x15F; Bir Hayat: Marie Curie&#x27;nin Radyasyonla Gelen Sonu" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>Hastal&#x131;k ve Do&#x11F;al Nedenler
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">Bilim U&#x11F;runa Adanm&#x131;&#x15F; Bir Hayat: Marie Curie&#x27;nin Radyasyonla Gelen Sonu</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    Fizik ve kimya olmak &#xFC;zere iki farkl&#x131; bilim dal&#x131;nda Nobel &#xD6;d&#xFC;l&#xFC; kazanan tarihteki tek insan olan Marie Curie (Madam Curi...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-20.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="5" data-aos="fade-up" data-aos-delay="50">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/nicholas_ii.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="&#x130;patiev Evi&#x27;nin Bodrumunda Katliam: Romanov Ailesinin Kur&#x15F;una Dizili&#x15F;i" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>&#x130;dam ve Yarg&#x131;lama
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">&#x130;patiev Evi&#x27;nin Bodrumunda Katliam: Romanov Ailesinin Kur&#x15F;una Dizili&#x15F;i</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    1917 Bol&#x15F;evik &#x130;htilali&#x27;nin ard&#x131;ndan tahttan feragat eden son Rus &#xC7;ar&#x131; II. Nikolay ve ailesi, 1918 yaz&#x131;nda Ural b&#xF6;lgesind...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-19.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="4" data-aos="fade-up" data-aos-delay="100">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/marilyn_monroe.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="Hollywood&#x27;un I&#x15F;&#x131;lt&#x131;l&#x131; Trajedisi: Marilyn Monroe&#x27;nun Gizemli &#xD6;l&#xFC;m&#xFC;" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>&#x15E;&#xFC;pheli &#xD6;l&#xFC;m ve Kazalar
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">Hollywood&#x27;un I&#x15F;&#x131;lt&#x131;l&#x131; Trajedisi: Marilyn Monroe&#x27;nun Gizemli &#xD6;l&#xFC;m&#xFC;</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    20. y&#xFC;zy&#x131;l&#x131;n en b&#xFC;y&#xFC;k sinema ikonu ve pop&#xFC;ler k&#xFC;lt&#xFC;r efsanesi Marilyn Monroe, 5 A&#x11F;ustos 1962 Pazar g&#xFC;n&#xFC; sabah&#x131;n erken sa...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-18.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="3" data-aos="fade-up" data-aos-delay="150">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/hemingway.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="Edebiyat&#x131;n Yaln&#x131;z Avc&#x131;s&#x131;: Ernest Hemingway&#x27;in Idaho&#x27;daki Sessizli&#x11F;i" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>&#x130;ntihar
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">Edebiyat&#x131;n Yaln&#x131;z Avc&#x131;s&#x131;: Ernest Hemingway&#x27;in Idaho&#x27;daki Sessizli&#x11F;i</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    &#x27;&#xC7;anlar Kimin &#x130;&#xE7;in &#xC7;al&#x131;yor&#x27;, &#x27;Silahlara Veda&#x27; ve &#x27;Ya&#x15F;l&#x131; Adam ve Deniz&#x27; gibi ba&#x15F;yap&#x131;tlar&#x131;n yazar&#x131;, Nobel ve Pulitzer &#xF6;d&#xFC;l...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-17.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="1" data-aos="fade-up" data-aos-delay="200">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/franz_ferdinand.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="Birinci D&#xFC;nya Sava&#x15F;&#x131;&#x27;n&#x131; Ba&#x15F;latan Kur&#x15F;unlar: Franz Ferdinand Suikast&#x131;" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>Suikast
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">Birinci D&#xFC;nya Sava&#x15F;&#x131;&#x27;n&#x131; Ba&#x15F;latan Kur&#x15F;unlar: Franz Ferdinand Suikast&#x131;</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    28 Haziran 1914 Pazar g&#xFC;n&#xFC; Avusturya-Macaristan &#x130;mparatorlu&#x11F;u veliahd&#x131; Ar&#x15F;id&#xFC;k Franz Ferdinand ve e&#x15F;i D&#xFC;&#x15F;es Sophie, aske...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-16.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="2" data-aos="fade-up" data-aos-delay="250">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/napoleon.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="S&#xFC;rg&#xFC;ndeki &#x130;mparatorun Sonu: Napolyon Bonapart ve Arsenik Esrar&#x131;" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>Zehirlenme
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">S&#xFC;rg&#xFC;ndeki &#x130;mparatorun Sonu: Napolyon Bonapart ve Arsenik Esrar&#x131;</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    Avrupa k&#x131;tas&#x131;n&#x131; fetheden ve hukuk devrimleri ger&#xE7;ekle&#x15F;tiren Frans&#x131;z &#x130;mparatoru Napolyon Bonapart, 1815&#x27;teki Waterloo yen...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-15.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="4" data-aos="fade-up" data-aos-delay="300">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/mozart.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="Yar&#x131;m Kalan Requiem: Wolfgang Amadeus Mozart&#x27;&#x131;n &#x15E;&#xFC;pheli &#xD6;l&#xFC;m&#xFC;" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>&#x15E;&#xFC;pheli &#xD6;l&#xFC;m ve Kazalar
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">Yar&#x131;m Kalan Requiem: Wolfgang Amadeus Mozart&#x27;&#x131;n &#x15E;&#xFC;pheli &#xD6;l&#xFC;m&#xFC;</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    M&#xFC;zik tarihinin tart&#x131;&#x15F;mas&#x131;z en b&#xFC;y&#xFC;k dehalar&#x131;ndan Wolfgang Amadeus Mozart, hen&#xFC;z 35 ya&#x15F;&#x131;ndayken 5 Aral&#x131;k 1791 gecesi saa...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-14.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="5" data-aos="fade-up" data-aos-delay="350">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/joan_of_arc.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="Y&#xFC;zy&#x131;l Sava&#x15F;lar&#x131;&#x27;n&#x131;n Bakiresi: Jeanne d&#x27;Arc&#x27;&#x131;n Yak&#x131;larak &#x130;dam&#x131;" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>&#x130;dam ve Yarg&#x131;lama
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">Y&#xFC;zy&#x131;l Sava&#x15F;lar&#x131;&#x27;n&#x131;n Bakiresi: Jeanne d&#x27;Arc&#x27;&#x131;n Yak&#x131;larak &#x130;dam&#x131;</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    Y&#xFC;zy&#x131;l Sava&#x15F;lar&#x131; s&#x131;ras&#x131;nda Tanr&#x131;&#x27;dan vahiy ald&#x131;&#x11F;&#x131;n&#x131; s&#xF6;yleyerek Frans&#x131;z ordusunu &#x130;ngiliz i&#x15F;galine kar&#x15F;&#x131; tarihi zaferlere ...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-13.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="1" data-aos="fade-up" data-aos-delay="400">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/mlk.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="Balkondaki Keskin Ni&#x15F;anc&#x131;: Martin Luther King Jr.&#x27;&#x131;n Katledilmesi" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>Suikast
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">Balkondaki Keskin Ni&#x15F;anc&#x131;: Martin Luther King Jr.&#x27;&#x131;n Katledilmesi</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    &#x27;Bir Hayalim Var&#x27; konu&#x15F;mas&#x131;yla &#x131;rk ayr&#x131;mc&#x131;l&#x131;&#x11F;&#x131;na kar&#x15F;&#x131; k&#xFC;resel bir vicdan hareketi ba&#x15F;latan ve 1964 Nobel Bar&#x131;&#x15F; &#xD6;d&#xFC;l&#xFC;&#x27;n&#xFC;...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-12.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="2" data-aos="fade-up" data-aos-delay="100">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/rasputin.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="&#xC7;arl&#x131;k Rusyas&#x131;&#x27;nda Gizemli Bir Gece: Grigori Rasputin&#x27;in Zehirlenmesi ve Katli" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>Zehirlenme
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">&#xC7;arl&#x131;k Rusyas&#x131;&#x27;nda Gizemli Bir Gece: Grigori Rasputin&#x27;in Zehirlenmesi ve Katli</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    Romanov Hanedan&#x131; &#xFC;zerinde kurdu&#x11F;u esrarengiz n&#xFC;fuzla Rus aristokrasisinin nefretini kazanan Sibiryal&#x131; &#x27;&#xE7;&#x131;lg&#x131;n ke&#x15F;i&#x15F;&#x27; Gri...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-11.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="3" data-aos="fade-up" data-aos-delay="150">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/van_gogh.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="Sanat&#x131;n Yaln&#x131;z Dehas&#x131;: Vincent van Gogh&#x27;un Auvers Tarlalar&#x131;ndaki Vedas&#x131;" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>&#x130;ntihar
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">Sanat&#x131;n Yaln&#x131;z Dehas&#x131;: Vincent van Gogh&#x27;un Auvers Tarlalar&#x131;ndaki Vedas&#x131;</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    Modern resim sanat&#x131;n&#x131;n en b&#xFC;y&#xFC;k &#xF6;nc&#xFC;lerinden Vincent van Gogh, &#xF6;mr&#xFC; boyunca m&#xFC;cadele etti&#x11F;i a&#x11F;&#x131;r psikolojik bunal&#x131;mlar v...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-10.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="1" data-aos="fade-up" data-aos-delay="200">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/gandhi.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="&#x15E;iddetsizli&#x11F;in Mimar&#x131; Mahatma Gandi&#x27;ye Y&#xF6;nelen Kur&#x15F;unlar" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>Suikast
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">&#x15E;iddetsizli&#x11F;in Mimar&#x131; Mahatma Gandi&#x27;ye Y&#xF6;nelen Kur&#x15F;unlar</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    Hindistan&#x27;&#x131;n ba&#x11F;&#x131;ms&#x131;zl&#x131;&#x11F;&#x131;n&#x131; pasif direni&#x15F; ve &#x15F;iddetsizlik (Ahimsa) felsefesiyle kazand&#x131;ran &#x27;B&#xFC;y&#xFC;k Ruh&#x27; Mahatma Gandi, 30...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-9.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="5" data-aos="fade-up" data-aos-delay="250">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/marie_antoinette.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="Devrim Mahkemesi ve Giyotin: Krali&#xE7;e Marie Antoinette&#x27;in &#x130;dam&#x131;" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>&#x130;dam ve Yarg&#x131;lama
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">Devrim Mahkemesi ve Giyotin: Krali&#xE7;e Marie Antoinette&#x27;in &#x130;dam&#x131;</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    Frans&#x131;z Devrimi&#x27;nin en radikal d&#xF6;neminde, Kral XVI. Louis&#x27;nin idam&#x131;ndan dokuz ay sonra s&#x131;ra e&#x15F;i Marie Antoinette&#x27;e geldi...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-8.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="6" data-aos="fade-up" data-aos-delay="300">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/alexander.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="D&#xFC;nyay&#x131; Fetheden H&#xFC;k&#xFC;mdar: B&#xFC;y&#xFC;k &#x130;skender&#x27;in Babil&#x27;deki Ani Vefat&#x131;" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>Hastal&#x131;k ve Do&#x11F;al Nedenler
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">D&#xFC;nyay&#x131; Fetheden H&#xFC;k&#xFC;mdar: B&#xFC;y&#xFC;k &#x130;skender&#x27;in Babil&#x27;deki Ani Vefat&#x131;</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    Tuna Nehri&#x27;nden &#x130;ndus Nehri&#x27;ne kadar uzanan bilinen d&#xFC;nyan&#x131;n b&#xFC;y&#xFC;k k&#x131;sm&#x131;n&#x131; fetheden Makedonya Kral&#x131; B&#xFC;y&#xFC;k &#x130;skender, M.&#xD6;....
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-7.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="4" data-aos="fade-up" data-aos-delay="350">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/diana.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="Paris T&#xFC;nelinde Kara Gece: Prenses Diana&#x27;n&#x131;n Trajik Kazas&#x131;" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>&#x15E;&#xFC;pheli &#xD6;l&#xFC;m ve Kazalar
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">Paris T&#xFC;nelinde Kara Gece: Prenses Diana&#x27;n&#x131;n Trajik Kazas&#x131;</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    31 A&#x11F;ustos 1997 gecesi Galler Prensesi Diana, sevgilisi Dodi Al Fayed ile birlikte Paris&#x27;teki Ritz Oteli&#x27;nden ayr&#x131;ld&#x131;. K...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-6.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="1" data-aos="fade-up" data-aos-delay="400">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/jfk.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="Dallas Konvoyunda A&#xE7;&#x131;lan Ate&#x15F;: John F. Kennedy&#x27;nin Trajik Sonu" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>Suikast
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">Dallas Konvoyunda A&#xE7;&#x131;lan Ate&#x15F;: John F. Kennedy&#x27;nin Trajik Sonu</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    22 Kas&#x131;m 1963 Cuma g&#xFC;n&#xFC; yerel saatle 12.30&#x27;da ABD&#x27;nin 35. Ba&#x15F;kan&#x131; John F. Kennedy, e&#x15F;i Jacqueline Kennedy ile birlikte T...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-5.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="3" data-aos="fade-up" data-aos-delay="100">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/cleopatra.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="Nil&#x27;in Son Krali&#xE7;esi Kleopatra&#x27;n&#x131;n Gizemli &#xD6;l&#xFC;m&#xFC;" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>&#x130;ntihar
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">Nil&#x27;in Son Krali&#xE7;esi Kleopatra&#x27;n&#x131;n Gizemli &#xD6;l&#xFC;m&#xFC;</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    Ptolemaios Hanedan&#x131;&#x27;n&#x131;n son h&#xFC;k&#xFC;mdar&#x131; VII. Kleopatra, sevgilisi ve m&#xFC;ttefiki Marcus Antonius&#x27;un Actium Deniz Muharebesi&#x27;...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-4.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="1" data-aos="fade-up" data-aos-delay="150">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/lincoln.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="Abraham Lincoln&#x27;e Ford Tiyatrosu&#x27;nda Hain Suikast" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>Suikast
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">Abraham Lincoln&#x27;e Ford Tiyatrosu&#x27;nda Hain Suikast</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    14 Nisan 1865 Cuma ak&#x15F;am&#x131;, Amerikan &#x130;&#xE7; Sava&#x15F;&#x131;&#x27;n&#x131;n sona ermesinden sadece be&#x15F; g&#xFC;n sonra, ABD Ba&#x15F;kan&#x131; Abraham Lincoln ve e...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-3.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="2" data-aos="fade-up" data-aos-delay="200">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/socrates.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="Sokrates&#x27;in Bald&#x131;ran Zehri ile &#x130;mtihan&#x131;: D&#xFC;&#x15F;&#xFC;ncenin Bedeli" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>Zehirlenme
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">Sokrates&#x27;in Bald&#x131;ran Zehri ile &#x130;mtihan&#x131;: D&#xFC;&#x15F;&#xFC;ncenin Bedeli</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    Antik Atina&#x27;n&#x131;n en b&#xFC;y&#xFC;k filozofu Sokrates, M.&#xD6;. 399 y&#x131;l&#x131;nda &#x15F;ehrin tanr&#x131;lar&#x131;na inanmamak ve gen&#xE7;lerin ahlak&#x131;n&#x131; bozmak s...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-2.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="1" data-aos="fade-up" data-aos-delay="250">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/caesar.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="J&#xFC;l Sezar&#x27;&#x131;n Son G&#xFC;n&#xFC;: Senatoda 23 B&#x131;&#xE7;ak Darbesi (Ides of March)" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>Suikast
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">J&#xFC;l Sezar&#x27;&#x131;n Son G&#xFC;n&#xFC;: Senatoda 23 B&#x131;&#xE7;ak Darbesi (Ides of March)</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    M.&#xD6;. 15 Mart 44&#x27;te Roma Diktat&#xF6;r&#xFC; J&#xFC;l Sezar, Pompey Tiyatrosu&#x27;nda toplanan Senato oturumuna kat&#x131;ld&#x131;. Senato binas&#x131;na gir...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-1.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.news-card-wrapper');
+        const filterAlert = document.getElementById('filterAlert');
+        const filterCategoryText = document.getElementById('filterCategoryText');
+        const clearFilterBtn = document.getElementById('clearFilterBtn');
+
+        function setCategory(categoryId, categoryName) {
+            filterBtns.forEach(btn => {
+                if (btn.getAttribute('data-category') === categoryId) {
+                    btn.classList.remove('btn-outline-secondary');
+                    btn.classList.add(categoryId === 'all' ? 'btn-light' : 'btn-danger', 'fw-bold', 'active');
+                    if (categoryId === 'all') btn.classList.add('text-dark');
+                } else {
+                    btn.classList.remove('btn-light', 'btn-danger', 'text-dark', 'fw-bold', 'active');
+                    btn.classList.add('btn-outline-secondary');
+                }
+            });
+
+            if (categoryId === 'all') {
+                filterAlert.classList.remove('d-flex');
+                filterAlert.classList.add('d-none');
+                cards.forEach(card => card.classList.remove('d-none'));
+            } else {
+                filterCategoryText.textContent = categoryName || '';
+                filterAlert.classList.remove('d-none');
+                filterAlert.classList.add('d-flex');
+                cards.forEach(card => {
+                    if (card.getAttribute('data-category-id') === categoryId) {
+                        card.classList.remove('d-none');
+                    } else {
+                        card.classList.add('d-none');
+                    }
+                });
+            }
+
+            if (window.AOS) {
+                AOS.refresh();
+            }
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                const cat = this.getAttribute('data-category');
+                const catName = this.getAttribute('data-category-name');
+                setCategory(cat, catName);
+            });
+        });
+
+        if (clearFilterBtn) {
+            clearFilterBtn.addEventListener('click', function () {
+                setCategory('all');
+            });
+        }
+    });
+</script>        </main>
+    </div>
+
+    <footer class="footer-custom mt-auto">
+        <div class="container text-center position-relative py-3">
+            &copy; 2026 - SON GÜN - Tüm Hakları Saklıdır
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/site.js"></script>
+    
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            document.documentElement.setAttribute('data-bs-theme', event.matches ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>

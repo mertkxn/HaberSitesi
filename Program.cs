@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using SonGun.Data;
 using SonGun.Models;
+using SonGun.Services;
 
 // Try candidate paths for .env
 var candidatePaths = new[]
@@ -86,6 +87,14 @@ using (var scope = app.Services.CreateScope())
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     dbContext.Database.Migrate();
     DbSeeder.SeedAsync(dbContext).GetAwaiter().GetResult();
+
+    if (args.Contains("--export") || args.Contains("export"))
+    {
+        var outputDir = args.FirstOrDefault(a => a != "--export" && a != "export" && !a.StartsWith("-")) ?? "docs";
+        StaticSiteGenerator.Generate(dbContext, outputDir);
+        Console.WriteLine($"[BAŞARILI] Statik site başarıyla oluşturuldu: '{outputDir}'");
+        return;
+    }
 }
 
 if (!app.Environment.IsDevelopment())
