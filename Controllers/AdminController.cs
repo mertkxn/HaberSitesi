@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SonGun.Data;
 using SonGun.Models;
@@ -20,6 +21,7 @@ public class AdminController : Controller
     public async Task<IActionResult> Index()
     {
         var newsList = await _context.News
+            .Include(n => n.Category)
             .AsNoTracking()
             .OrderByDescending(n => n.CreatedAt)
             .ToListAsync();
@@ -27,9 +29,13 @@ public class AdminController : Controller
         return View(newsList);
     }
 
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
-        return View(new NewsCreateEditViewModel());
+        var model = new NewsCreateEditViewModel
+        {
+            Categories = await GetCategorySelectListAsync()
+        };
+        return View(model);
     }
 
     [HttpPost]
@@ -40,10 +46,11 @@ public class AdminController : Controller
         {
             var news = new News
             {
+                CategoryId = model.CategoryId,
                 Title = model.Title,
                 Content = model.Content,
                 ImageUrl = model.ImageUrl,
-                Author = User.Identity?.Name ?? "Admin",
+                Author = "Azrail",
                 CreatedAt = DateTime.UtcNow
             };
 
@@ -52,6 +59,7 @@ public class AdminController : Controller
             return RedirectToAction(nameof(Index));
         }
 
+        model.Categories = await GetCategorySelectListAsync();
         return View(model);
     }
 
@@ -65,9 +73,11 @@ public class AdminController : Controller
         var model = new NewsCreateEditViewModel
         {
             Id = news.Id,
+            CategoryId = news.CategoryId,
             Title = news.Title,
             Content = news.Content,
-            ImageUrl = news.ImageUrl
+            ImageUrl = news.ImageUrl,
+            Categories = await GetCategorySelectListAsync()
         };
 
         return View(model);
@@ -87,6 +97,7 @@ public class AdminController : Controller
                 return NotFound();
             }
 
+            existingNews.CategoryId = model.CategoryId;
             existingNews.Title = model.Title;
             existingNews.Content = model.Content;
             existingNews.ImageUrl = model.ImageUrl;
@@ -95,6 +106,7 @@ public class AdminController : Controller
             return RedirectToAction(nameof(Index));
         }
 
+        model.Categories = await GetCategorySelectListAsync();
         return View(model);
     }
 
@@ -103,7 +115,10 @@ public class AdminController : Controller
     {
         if (id == null) return NotFound();
 
-        var news = await _context.News.AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
+        var news = await _context.News
+            .Include(n => n.Category)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(m => m.Id == id);
         if (news == null) return NotFound();
 
         return View(news);
@@ -122,5 +137,18 @@ public class AdminController : Controller
         }
 
         return RedirectToAction(nameof(Index));
+    }
+
+    private async Task<IEnumerable<SelectListItem>> GetCategorySelectListAsync()
+    {
+        return await _context.Categories
+            .AsNoTracking()
+            .OrderBy(c => c.Name)
+            .Select(c => new SelectListItem
+            {
+                Value = c.Id.ToString(),
+                Text = c.Name
+            })
+            .ToListAsync();
     }
 }

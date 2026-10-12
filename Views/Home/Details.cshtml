@@ -11,11 +11,17 @@
         </a>
 
         <article class="card card-theme shadow-sm rounded-3 overflow-hidden p-4 p-md-5">
+            <div class="mb-3">
+                <span class="badge bg-danger rounded-pill px-3 py-2 fs-6">
+                    <i class="fas fa-tag me-1"></i>@(Model.Category?.Name ?? "Ölüm Sebebi Belirtilmemiş")
+                </span>
+            </div>
+
             <h1 class="display-6 fw-bold theme-heading mb-3">@Model.Title</h1>
 
             <div class="d-flex flex-wrap align-items-center gap-3 text-muted-custom mb-4 pb-3 border-bottom" style="border-color: var(--border-color) !important;">
                 <span>
-                    <i class="fas fa-user-edit me-1 text-primary"></i> <strong>@Model.Author</strong>
+                    <i class="fas fa-skull me-1 text-danger"></i> Yazar: <strong>@Model.Author</strong>
                 </span>
                 <span>•</span>
                 <span>
@@ -25,8 +31,12 @@
 
             @if (!string.IsNullOrEmpty(Model.ImageUrl))
             {
-                <div class="mb-4 text-center">
-                    <img src="@Model.ImageUrl" class="img-fluid rounded-3 shadow-sm w-100" style="max-height: 450px; object-fit: cover;" alt="@Model.Title" onerror="this.src='/images/logo.png'" />
+                <div class="mb-4 text-center rounded-3 overflow-hidden shadow-sm" style="background-color: #121212;">
+                    <img src="@Model.ImageUrl" 
+                         class="img-fluid rounded-3" 
+                         style="max-height: 540px; width: auto; object-fit: contain; margin: 0 auto; display: block;" 
+                         alt="@Model.Title" 
+                         onerror="this.src='/images/logo.png'" />
                 </div>
             }
 

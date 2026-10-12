@@ -39,9 +39,9 @@ string GetEnvOrConfig(string key, string fallback)
 builder.Services.Configure<AuthSettings>(options =>
 {
     options.AdminUsername = GetEnvOrConfig("ADMIN_USERNAME", "admin");
-    options.AdminPassword = GetEnvOrConfig("ADMIN_PASSWORD", "Saddam123!");
+    options.AdminPassword = GetEnvOrConfig("ADMIN_PASSWORD", "12345");
     options.EditorUsername = GetEnvOrConfig("EDITOR_USERNAME", "editor");
-    options.EditorPassword = GetEnvOrConfig("EDITOR_PASSWORD", "Haberci123!");
+    options.EditorPassword = GetEnvOrConfig("EDITOR_PASSWORD", "12345");
 });
 
 // Add services
@@ -80,11 +80,12 @@ builder.Services.AddRateLimiter(options =>
 
 var app = builder.Build();
 
-// Automatically apply EF Core database migrations on startup
+// Automatically apply EF Core database migrations on startup and seed data
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     dbContext.Database.Migrate();
+    DbSeeder.SeedAsync(dbContext).GetAwaiter().GetResult();
 }
 
 if (!app.Environment.IsDevelopment())

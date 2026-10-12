@@ -17,11 +17,28 @@ public class HomeController : Controller
         _context = context;
     }
 
-    public async Task<IActionResult> Index(int page = 1)
+    public async Task<IActionResult> Index(int? categoryId, int page = 1)
     {
         if (page < 1) page = 1;
 
-        var query = _context.News.AsNoTracking().OrderByDescending(n => n.CreatedAt);
+        var categories = await _context.Categories
+            .AsNoTracking()
+            .OrderBy(c => c.Id)
+            .ToListAsync();
+
+        var query = _context.News
+            .Include(n => n.Category)
+            .AsNoTracking();
+
+        string? selectedCategoryName = null;
+        if (categoryId.HasValue && categoryId.Value > 0)
+        {
+            query = query.Where(n => n.CategoryId == categoryId.Value);
+            selectedCategoryName = categories.FirstOrDefault(c => c.Id == categoryId.Value)?.Name;
+        }
+
+        query = query.OrderByDescending(n => n.CreatedAt);
+
         var totalCount = await query.CountAsync();
         var totalPages = (int)Math.Ceiling(totalCount / (double)PageSize);
         if (totalPages == 0) totalPages = 1;
@@ -34,6 +51,9 @@ public class HomeController : Controller
         var viewModel = new HomeIndexViewModel
         {
             NewsList = newsList,
+            Categories = categories,
+            SelectedCategoryId = categoryId,
+            SelectedCategoryName = selectedCategoryName,
             CurrentPage = page,
             TotalPages = totalPages
         };
@@ -44,6 +64,7 @@ public class HomeController : Controller
     public async Task<IActionResult> Details(int id)
     {
         var news = await _context.News
+            .Include(m => m.Category)
             .AsNoTracking()
             .FirstOrDefaultAsync(m => m.Id == id);
 

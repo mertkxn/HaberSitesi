@@ -16,22 +16,28 @@
         <table class="table table-theme table-hover align-middle mb-0">
             <thead>
                 <tr>
-                    <th style="width: 45%;">Başlık</th>
+                    <th style="width: 35%;">Başlık</th>
+                    <th>Kategori / Sebep</th>
                     <th>Yazar</th>
                     <th>Tarih</th>
                     <th class="text-end">İşlemler</th>
                 </tr>
             </thead>
             <tbody>
-                @if (Model.Any())
+                @if (Model != null && Model.Any())
                 {
                     foreach (var item in Model)
                     {
                         <tr>
                             <td class="fw-semibold">@item.Title</td>
                             <td>
-                                <span class="badge rounded-pill bg-secondary">
-                                    <i class="fas fa-user me-1"></i>@item.Author
+                                <span class="badge bg-danger rounded-pill">
+                                    <i class="fas fa-tag me-1"></i>@(item.Category?.Name ?? "-")
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge bg-dark border border-secondary rounded-pill text-light">
+                                    <i class="fas fa-skull me-1 text-danger"></i>@item.Author
                                 </span>
                             </td>
                             <td class="text-muted-custom">@item.CreatedAt.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</td>
@@ -55,7 +61,7 @@
                 else
                 {
                     <tr>
-                        <td colspan="4" class="text-center py-4 text-muted-custom">
+                        <td colspan="5" class="text-center py-4 text-muted-custom">
                             Kayıtlı haber bulunmuyor.
                         </td>
                     </tr>

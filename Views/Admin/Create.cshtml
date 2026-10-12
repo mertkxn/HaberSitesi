@@ -14,14 +14,22 @@
                 <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
 
                 <div class="mb-3">
+                    <label asp-for="CategoryId" class="form-label fw-semibold"></label>
+                    <select asp-for="CategoryId" asp-items="Model.Categories" class="form-select input-theme">
+                        <option value="">-- Ölüm Sebebi / Kategori Seçin --</option>
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
                     <label asp-for="Title" class="form-label fw-semibold"></label>
-                    <input asp-for="Title" class="form-control input-theme" placeholder="Haber başlığı" />
+                    <input asp-for="Title" class="form-control input-theme" placeholder="Haber başlığı (Örn: Jül Sezar'ın Son Günü: İdes of March)" />
                     <span asp-validation-for="Title" class="text-danger small"></span>
                 </div>
 
                 <div class="mb-3">
                     <label asp-for="Content" class="form-label fw-semibold"></label>
-                    <textarea asp-for="Content" class="form-control input-theme" rows="6" placeholder="Haber içeriğini buraya yazın..."></textarea>
+                    <textarea asp-for="Content" class="form-control input-theme" rows="6" placeholder="Haber içeriğini ve tarihi olayların ayrıntılarını buraya yazın..."></textarea>
                     <span asp-validation-for="Content" class="text-danger small"></span>
                 </div>
 
