@@ -316,7 +316,20 @@ Hemen ardından odaya giren infaz müfrezesi tabancalarla ateş açtı. Elbisele
 Uranyum, polonyum ve radyum elementlerini ayrıştırırken radyasyonun insan sağlığı üzerindeki ölümcül etkileri henüz bilinmiyordu. Curie, onlarca yıl boyunca laboratuvar önlüğünün ceplerinde parıldayan radyoaktif tüpler taşıdı, parmak uçlarında radyasyon yanıklarıyla çalıştı ve hatta masasının çekmecesinde radyum tuzları sakladı.
 
 Yıllar süren yüksek dozda radyasyon maruziyeti, kemik iliğini geri dönülmez şekilde tahrip etti. 4 Temmuz 1934'te Fransa'nın Passy kentindeki Sancellemoz Sanatoryumu'nda aplastik anemi nedeniyle 66 yaşında vefat etti. Bugün dahi Marie Curie'nin not defterleri, laboratuvar eşyaları ve hatta naaşı kurşun kaplı tabutta muhafaza edilecek düzeyde radyoaktiftir."
-            }
+            },
+            new News
+            {
+                Title = "Saat 9'u 5 Geçe Bir Milletin Yası: Gazi Mustafa Kemal Atatürk'ün Son Günü",
+                CategoryId = hastalikId,
+                Author = "Azrail",
+                ImageUrl = "/images/people/ataturk.jpg",
+                CreatedAt = DateTime.UtcNow,
+                Content = @"Türkiye Cumhuriyeti'nin kurucusu ve bağımsızlık mücadelesinin önderi Gazi Mustafa Kemal Atatürk, ömrünü cephelerde, milletinin bağımsızlığı ve modern bir cumhuriyetin inşası uğruna tüketmişti.
+
+1938 yılının başlarında sağlığı giderek bozulan Atatürk'e siroz teşhisi konuldu. Tüm sağlık sorunlarına ve doktorların kesin istirahat uyarılarına rağmen Hatay meselesini milli bir dava olarak görerek yoğun mesaisini aksatmadı. Durumu ağırlaşınca Dolmabahçe Sarayı'nda tedavi altına alındı ve 8 Kasım 1938'de şiddetli bir komaya girdi.
+
+10 Kasım 1938 Perşembe sabahı saatler 09.05'i gösterdiğinde Dolmabahçe Sarayı 71 numaralı odada derin bir sessizlik hakim oldu. Doktorlarının gözetiminde, 57 yaşında hayata gözlerini yumdu. Büyük Önder'in ebediyete intikali yalnızca Türk milletini değil, tüm dünyayı derin bir yasa boğdu. Naaşı önce Ankara Etnografya Müzesi'ne, 10 Kasım 1953'te ise ebedi istirahatgâhı olan Anıtkabir'e nakledildi."
+            },
         };
 
         foreach (var item in historicalNews)

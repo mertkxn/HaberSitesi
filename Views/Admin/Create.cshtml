@@ -33,6 +33,15 @@
                     <span asp-validation-for="Content" class="text-danger small"></span>
                 </div>
 
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Yazar</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-secondary text-danger"><i class="fas fa-skull"></i></span>
+                        <input type="text" class="form-control input-theme" value="Azrail" readonly disabled />
+                    </div>
+                    <small class="text-muted">Tüm haberlerin yazarı konsept gereği otomatik olarak <strong>Azrail</strong> olarak atanır.</small>
+                </div>
+
                 <div class="mb-4">
                     <label asp-for="ImageUrl" class="form-label fw-semibold"></label>
                     <input asp-for="ImageUrl" class="form-control input-theme" placeholder="https://example.com/resim.jpg" />

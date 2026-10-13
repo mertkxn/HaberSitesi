@@ -16,10 +16,29 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<News>()
-            .HasOne(n => n.Category)
-            .WithMany(c => c.News)
-            .HasForeignKey(n => n.CategoryId)
-            .OnDelete(DeleteBehavior.Restrict);
+        modelBuilder.Entity<Category>(entity =>
+        {
+            entity.ToTable("Kategoriler");
+            entity.Property(c => c.Id).HasColumnName("Id");
+            entity.Property(c => c.Name).HasColumnName("KategoriAdi");
+            entity.Property(c => c.Description).HasColumnName("Aciklama");
+        });
+
+        modelBuilder.Entity<News>(entity =>
+        {
+            entity.ToTable("Haberler");
+            entity.Property(n => n.Id).HasColumnName("Id");
+            entity.Property(n => n.CategoryId).HasColumnName("KategoriId");
+            entity.Property(n => n.Title).HasColumnName("Baslik");
+            entity.Property(n => n.Content).HasColumnName("Icerik");
+            entity.Property(n => n.ImageUrl).HasColumnName("ResimUrl");
+            entity.Property(n => n.Author).HasColumnName("Yazar");
+            entity.Property(n => n.CreatedAt).HasColumnName("OlusturulmaTarihi");
+
+            entity.HasOne(n => n.Category)
+                .WithMany(c => c.News)
+                .HasForeignKey(n => n.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+        });
     }
 }

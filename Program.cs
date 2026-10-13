@@ -87,6 +87,7 @@ using (var scope = app.Services.CreateScope())
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     dbContext.Database.Migrate();
     DbSeeder.SeedAsync(dbContext).GetAwaiter().GetResult();
+    SqlExporter.ExportToSql(dbContext, Path.Combine(app.Environment.ContentRootPath, "database.sql"));
 
     if (args.Contains("--export") || args.Contains("export"))
     {

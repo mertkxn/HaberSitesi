@@ -56,6 +56,7 @@ public class AdminController : Controller
 
             _context.News.Add(news);
             await _context.SaveChangesAsync();
+            SqlExporter.ExportToSql(_context, "database.sql");
             return RedirectToAction(nameof(Index));
         }
 
@@ -101,8 +102,10 @@ public class AdminController : Controller
             existingNews.Title = model.Title;
             existingNews.Content = model.Content;
             existingNews.ImageUrl = model.ImageUrl;
+            existingNews.Author = "Azrail";
 
             await _context.SaveChangesAsync();
+            SqlExporter.ExportToSql(_context, "database.sql");
             return RedirectToAction(nameof(Index));
         }
 
@@ -134,6 +137,7 @@ public class AdminController : Controller
         {
             _context.News.Remove(news);
             await _context.SaveChangesAsync();
+            SqlExporter.ExportToSql(_context, "database.sql");
         }
 
         return RedirectToAction(nameof(Index));
