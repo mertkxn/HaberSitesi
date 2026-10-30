@@ -7,7 +7,6 @@ public static class DbSeeder
 {
     public static async Task SeedAsync(AppDbContext context)
     {
-        // 1. Kategorileri Kontrol Et ve Ekle
         var categoryMap = new Dictionary<string, Category>();
 
         var defaultCategories = new List<Category>
@@ -23,6 +22,7 @@ public static class DbSeeder
         foreach (var defCat in defaultCategories)
         {
             var existing = await context.Categories.FirstOrDefaultAsync(c => c.Name == defCat.Name);
+            // Inserts category if missing; otherwise retains existing database record reference
             if (existing == null)
             {
                 context.Categories.Add(defCat);
@@ -35,8 +35,8 @@ public static class DbSeeder
             }
         }
 
-        // Eğer kategoriye bağlı olmayan haberler varsa ilk kategoriye bağla
         var existingNewsWithoutCategory = await context.News.Where(n => n.CategoryId == 0).ToListAsync();
+        // Binds orphaned articles (CategoryId == 0) to default category to preserve referential integrity
         if (existingNewsWithoutCategory.Any())
         {
             var fallbackCategory = categoryMap.Values.First();
@@ -47,7 +47,6 @@ public static class DbSeeder
             await context.SaveChangesAsync();
         }
 
-        // 2. 20 Önemli Kişinin Gerçek Portreleriyle Haberleri
         var suikastId = categoryMap["Suikast"].Id;
         var zehirlenmeId = categoryMap["Zehirlenme"].Id;
         var intiharId = categoryMap["İntihar"].Id;
@@ -335,6 +334,7 @@ Yıllar süren yüksek dozda radyasyon maruziyeti, kemik iliğini geri dönülme
         foreach (var item in historicalNews)
         {
             var existing = await context.News.FirstOrDefaultAsync(n => n.Title == item.Title);
+            // Inserts article if headline is not found; refreshes metadata if already seeded
             if (existing == null)
             {
                 context.News.Add(item);

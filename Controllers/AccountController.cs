@@ -25,6 +25,7 @@ public class AccountController : Controller
     [HttpGet]
     public IActionResult Login(string? returnUrl = null)
     {
+        // Redirects already authenticated users away from the login page to the target URL or home
         if (User.Identity?.IsAuthenticated == true)
         {
             return RedirectToLocal(returnUrl);
@@ -38,6 +39,7 @@ public class AccountController : Controller
     [EnableRateLimiting("login-limiter")]
     public async Task<IActionResult> Login(LoginViewModel model)
     {
+        // Re-renders the login view with validation error messages if input constraints fail
         if (!ModelState.IsValid)
         {
             return View(model);
@@ -45,19 +47,20 @@ public class AccountController : Controller
 
         string? role = null;
 
-        // Check if admin credentials match safely
+        // Assigns the 'Admin' role if submitted credentials match administrator configuration
         if (SafeEqualsUsername(model.Username, _authSettings.AdminUsername) &&
             SafeEqualsPassword(model.Password, _authSettings.AdminPassword))
         {
             role = "Admin";
         }
-        // Check if editor credentials match safely
+        // Assigns the 'Editor' role if submitted credentials match editor configuration
         else if (SafeEqualsUsername(model.Username, _authSettings.EditorUsername) &&
                  SafeEqualsPassword(model.Password, _authSettings.EditorPassword))
         {
             role = "Editor";
         }
 
+        // Issues an encrypted authentication cookie and signs the user in upon successful role match
         if (role != null)
         {
             var claims = new List<Claim>
@@ -95,8 +98,10 @@ public class AccountController : Controller
         return RedirectToAction("Index", "Home");
     }
 
+    // Validates target redirect URL to prevent Open Redirect phishing vulnerabilities
     private IActionResult RedirectToLocal(string? returnUrl)
     {
+        // Ensures the return URL belongs to the local site before performing redirect
         if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
         {
             return LocalRedirect(returnUrl);
@@ -105,8 +110,10 @@ public class AccountController : Controller
         return RedirectToAction("Index", "Home");
     }
 
+    // Compares usernames in a case-insensitive manner while rejecting null/whitespace input
     private static bool SafeEqualsUsername(string? a, string? b)
     {
+        // Rejects comparison immediately if either username string is null or whitespace
         if (string.IsNullOrWhiteSpace(a) || string.IsNullOrWhiteSpace(b))
         {
             return false;
@@ -115,8 +122,10 @@ public class AccountController : Controller
         return string.Equals(a.Trim(), b.Trim(), StringComparison.OrdinalIgnoreCase);
     }
 
+    // Compares passwords using constant-time byte equality to prevent side-channel timing attacks
     private static bool SafeEqualsPassword(string? input, string? actual)
     {
+        // Returns false immediately if either password argument is null or empty
         if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(actual))
         {
             return false;

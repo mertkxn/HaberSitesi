@@ -12,6 +12,7 @@ public class AppDbContext : DbContext
     public DbSet<Category> Categories => Set<Category>();
     public DbSet<News> News => Set<News>();
 
+    // Configures entity-to-table mappings, column names, and relational constraints using Fluent API
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -35,6 +36,7 @@ public class AppDbContext : DbContext
             entity.Property(n => n.Author).HasColumnName("Yazar");
             entity.Property(n => n.CreatedAt).HasColumnName("OlusturulmaTarihi");
 
+            // Configures one-to-many relationship and restricts category deletion when articles are linked
             entity.HasOne(n => n.Category)
                 .WithMany(c => c.News)
                 .HasForeignKey(n => n.CategoryId)

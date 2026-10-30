@@ -19,6 +19,7 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index(int? categoryId, int page = 1)
     {
+        // Normalizes page index to 1 if negative or zero value is provided
         if (page < 1) page = 1;
 
         var categories = await _context.Categories
@@ -31,6 +32,7 @@ public class HomeController : Controller
             .AsNoTracking();
 
         string? selectedCategoryName = null;
+        // Filters articles by category ID when a valid category is selected by user
         if (categoryId.HasValue && categoryId.Value > 0)
         {
             query = query.Where(n => n.CategoryId == categoryId.Value);
@@ -41,8 +43,10 @@ public class HomeController : Controller
 
         var totalCount = await query.CountAsync();
         var totalPages = (int)Math.Ceiling(totalCount / (double)PageSize);
+        // Ensures total page count is at least 1 even when no records exist
         if (totalPages == 0) totalPages = 1;
 
+        // Queries only current page slice using server-side pagination (Skip/Take)
         var newsList = await query
             .Skip((page - 1) * PageSize)
             .Take(PageSize)
@@ -68,6 +72,7 @@ public class HomeController : Controller
             .AsNoTracking()
             .FirstOrDefaultAsync(m => m.Id == id);
 
+        // Returns 404 Not Found if requested article ID does not match any record
         if (news == null)
         {
             return NotFound();

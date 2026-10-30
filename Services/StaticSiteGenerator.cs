@@ -8,28 +8,29 @@ namespace SonGun.Services;
 
 public static class StaticSiteGenerator
 {
+    // Converts database articles and categories into static HTML pages for serverless deployment
     public static void Generate(AppDbContext context, string outputDir = "docs")
     {
         var rootPath = Directory.GetCurrentDirectory();
         var outputPath = Path.Combine(rootPath, outputDir);
 
+        // Cleans up previous build output directory to prevent stale files and conflicts
         if (Directory.Exists(outputPath))
         {
             Directory.Delete(outputPath, true);
         }
         Directory.CreateDirectory(outputPath);
 
-        // Copy wwwroot assets to output directory
         var wwwrootPath = Path.Combine(rootPath, "wwwroot");
+        // Copies static assets including CSS, JavaScript, and portrait imagery to target directory
         if (Directory.Exists(wwwrootPath))
         {
             CopyDirectory(wwwrootPath, outputPath);
         }
 
-        // Add .nojekyll file for GitHub Pages compatibility
+        // Bypasses Jekyll processing on GitHub Pages to serve static files verbatim
         File.WriteAllText(Path.Combine(outputPath, ".nojekyll"), "");
 
-        // Fetch data
         var categories = context.Categories.AsNoTracking().OrderBy(c => c.Id).ToList();
         var newsList = context.News
             .Include(n => n.Category)
@@ -37,11 +38,9 @@ public static class StaticSiteGenerator
             .OrderByDescending(n => n.CreatedAt)
             .ToList();
 
-        // 1. Generate index.html
         var indexHtml = BuildIndexHtml(categories, newsList);
         File.WriteAllText(Path.Combine(outputPath, "index.html"), indexHtml, Encoding.UTF8);
 
-        // 2. Generate details-{id}.html for each news item
         foreach (var item in newsList)
         {
             var detailHtml = BuildDetailsHtml(item);
@@ -49,9 +48,11 @@ public static class StaticSiteGenerator
         }
     }
 
+    // Recursively copies directories and nested files from source to destination path
     private static void CopyDirectory(string sourceDir, string destinationDir)
     {
         var dir = new DirectoryInfo(sourceDir);
+        // Exits early if source directory does not exist on disk
         if (!dir.Exists) return;
 
         Directory.CreateDirectory(destinationDir);
@@ -80,7 +81,6 @@ public static class StaticSiteGenerator
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{encodedTitle}} - SON GÜN</title>
     
-    <!-- Theme Auto-Detector for Bootstrap 5 -->
     <script>
         (function () {
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -88,14 +88,9 @@ public static class StaticSiteGenerator
         })();
     </script>
     
-    <!-- CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/site.css" />
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    
-    <!-- AOS Animation CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -138,12 +133,9 @@ public static class StaticSiteGenerator
         </div>
     </footer>
     
-    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/site.js"></script>
-    
-    <!-- AOS Animation JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
@@ -175,7 +167,6 @@ public static class StaticSiteGenerator
     <hr class="w-50 mx-auto theme-divider" />
 </div>
 
-<!-- Kategori Filtreleme Butonları -->
 <div class="d-flex flex-wrap justify-content-center gap-2 mb-4" data-aos="fade-up">
     <button type="button" class="btn btn-sm rounded-pill px-3 py-2 btn-light text-dark fw-bold filter-btn active" data-category="all">
         <i class="fas fa-layer-group me-1"></i> Tümü
@@ -216,8 +207,8 @@ public static class StaticSiteGenerator
             var excerpt = news.Content.Length > 120 ? news.Content.Substring(0, 120) + "..." : news.Content;
             var excerptEscaped = HtmlEncoder.Default.Encode(excerpt);
             
-            // Normalize image path for relative usage
             string imageUrl = news.ImageUrl ?? "";
+            // Strips leading slash to enable relative path resolution in static deployments
             if (imageUrl.StartsWith("/"))
             {
                 imageUrl = imageUrl.Substring(1);
@@ -229,6 +220,7 @@ public static class StaticSiteGenerator
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
 """);
 
+            // Renders portrait image container if available, otherwise falls back to placeholder graphic
             if (!string.IsNullOrEmpty(imageUrl))
             {
                 sb.Append($$"""
@@ -280,6 +272,7 @@ public static class StaticSiteGenerator
 """);
 
             delay += 50;
+            // Caps animation delay progression to avoid excessive wait times on scroll
             if (delay > 400) delay = 100;
         }
 
@@ -360,6 +353,7 @@ public static class StaticSiteGenerator
         var content = HtmlEncoder.Default.Encode(news.Content);
 
         string imageUrl = news.ImageUrl ?? "";
+        // Removes absolute slash for relative link compatibility in static exports
         if (imageUrl.StartsWith("/"))
         {
             imageUrl = imageUrl.Substring(1);
@@ -395,6 +389,7 @@ public static class StaticSiteGenerator
             </div>
 """);
 
+        // Renders hero image container when image path is present on article model
         if (!string.IsNullOrEmpty(imageUrl))
         {
             sb.Append($$"""

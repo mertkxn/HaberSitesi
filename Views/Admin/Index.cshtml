@@ -24,6 +24,7 @@
                 </tr>
             </thead>
             <tbody>
+                @* Renders news records row-by-row in administrative management table when data exists *@
                 @if (Model != null && Model.Any())
                 {
                     foreach (var item in Model)
@@ -48,6 +49,7 @@
                                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning me-1" title="Düzenle">
                                     <i class="fas fa-edit"></i>
                                 </a>
+                                @* Restricts delete trigger exclusively to administrators via role check *@
                                 @if (User.IsInRole("Admin"))
                                 {
                                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger" title="Sil">

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SON GÜN</title>
     
-    <!-- Theme Auto-Detector for Bootstrap 5 -->
+    @* Detects operating system dark/light theme preference before page render to apply Bootstrap 5 theme dynamically *@
     <script>
         (function () {
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -13,15 +13,11 @@
         })();
     </script>
     
-    <!-- CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SonGun.styles.css" asp-append-version="true" />
     
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    
-    <!-- AOS Animation CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -41,6 +37,7 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-home me-1"></i> Ana Sayfa</a>
                         </li>
+                        @* Shows management panel link only to authenticated users *@
                         @if(User.Identity?.IsAuthenticated == true)
                         {
                             <li class="nav-item">
@@ -49,6 +46,7 @@
                         }
                     </ul>
                     <ul class="navbar-nav">
+                        @* Displays active username and secure logout button for authenticated sessions *@
                         @if(User.Identity?.IsAuthenticated == true)
                         {
                             <li class="nav-item d-flex align-items-center me-3 text-white">
@@ -75,18 +73,17 @@
     <footer class="footer-custom mt-auto">
         <div class="container text-center position-relative">
             &copy; 2026 - SON GÜN - Tüm Hakları Saklıdır
+            @* Provides unobtrusive login entry point via hidden footer lock icon for authorized personnel *@
             <a asp-area="" asp-controller="Account" asp-action="Login" class="secret-login-link position-absolute" style="right: 15px; top: 0;" title="Yönetici Girişi">
                 <i class="fas fa-lock"></i>
             </a>
         </div>
     </footer>
     
-    <!-- Scripts -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     
-    <!-- AOS Animation JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
@@ -96,6 +93,7 @@
             mirror: false
         });
         
+        // Listens for operating system color scheme transitions to update Bootstrap theme without page refresh
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
             document.documentElement.setAttribute('data-bs-theme', event.matches ? 'dark' : 'light');
         });

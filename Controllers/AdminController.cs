@@ -42,6 +42,7 @@ public class AdminController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(NewsCreateEditViewModel model)
     {
+        // Persists new news article to database when validation constraints are satisfied
         if (ModelState.IsValid)
         {
             var news = new News
@@ -60,15 +61,18 @@ public class AdminController : Controller
             return RedirectToAction(nameof(Index));
         }
 
+        // Repopulates category dropdown options if form submission fails validation
         model.Categories = await GetCategorySelectListAsync();
         return View(model);
     }
 
     public async Task<IActionResult> Edit(int? id)
     {
+        // Returns 404 Not Found if article identifier parameter is missing
         if (id == null) return NotFound();
 
         var news = await _context.News.FindAsync(id);
+        // Returns 404 Not Found if requested article does not exist in the database
         if (news == null) return NotFound();
 
         var model = new NewsCreateEditViewModel
@@ -88,11 +92,14 @@ public class AdminController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, NewsCreateEditViewModel model)
     {
+        // Validates that route ID matches the posted model ID to guard against tampering
         if (id != model.Id) return NotFound();
 
+        // Updates database entity with validated view model fields
         if (ModelState.IsValid)
         {
             var existingNews = await _context.News.FindAsync(id);
+            // Returns 404 if record was removed concurrently prior to save
             if (existingNews == null)
             {
                 return NotFound();
@@ -109,19 +116,23 @@ public class AdminController : Controller
             return RedirectToAction(nameof(Index));
         }
 
+        // Reloads category list if validation fails so dropdown remains functional
         model.Categories = await GetCategorySelectListAsync();
         return View(model);
     }
 
+    // Restricts news deletion exclusively to users possessing the 'Admin' role
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int? id)
     {
+        // Rejects request with 404 if article ID is null
         if (id == null) return NotFound();
 
         var news = await _context.News
             .Include(n => n.Category)
             .AsNoTracking()
             .FirstOrDefaultAsync(m => m.Id == id);
+        // Returns 404 if target entity is not found in database
         if (news == null) return NotFound();
 
         return View(news);
@@ -133,6 +144,7 @@ public class AdminController : Controller
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
         var news = await _context.News.FindAsync(id);
+        // Removes article permanently and refreshes SQL backup dump when entity exists
         if (news != null)
         {
             _context.News.Remove(news);
@@ -143,6 +155,7 @@ public class AdminController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    // Prepares category SelectList items for news creation and edit dropdowns
     private async Task<IEnumerable<SelectListItem>> GetCategorySelectListAsync()
     {
         return await _context.Categories

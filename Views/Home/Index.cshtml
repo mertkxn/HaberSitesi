@@ -10,7 +10,7 @@
     <hr class="w-50 mx-auto theme-divider" />
 </div>
 
-<!-- Kategori Filtreleme Butonları -->
+@* Renders category filter pills when category list contains records *@
 @if (Model.Categories != null && Model.Categories.Any())
 {
     <div class="d-flex flex-wrap justify-content-center gap-2 mb-5" data-aos="fade-up">
@@ -30,6 +30,7 @@
     </div>
 }
 
+@* Displays active filter notification banner with reset button when a category filter is selected *@
 @if (!string.IsNullOrEmpty(Model.SelectedCategoryName))
 {
     <div class="alert alert-dark border-secondary d-flex justify-content-between align-items-center mb-4" data-aos="fade-in">
@@ -39,6 +40,7 @@
 }
 
 <div class="row">
+    @* Iterates and renders articles when dataset is not empty; falls back to empty state message otherwise *@
     @if(Model.NewsList != null && Model.NewsList.Any())
     {
         int delay = 0;
@@ -46,6 +48,7 @@
         {
             <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="@delay">
                 <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+                    @* Shows portrait cover image container if URL is provided, or placeholder icon otherwise *@
                     @if (!string.IsNullOrEmpty(news.ImageUrl))
                     {
                         <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
@@ -88,6 +91,7 @@
             delay += 50;
         }
 
+        @* Generates pagination navigation controls when total article count spans multiple pages *@
         @if(Model.TotalPages > 1)
         {
             <div class="col-12 mt-4" data-aos="fade-up">

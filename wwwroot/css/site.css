@@ -1,3 +1,4 @@
+/* Açık tema (Light Mode) renk değişkenleri */
 :root {
     --navbar-bg: #000000;
     --navbar-border: #222222;
@@ -26,6 +27,7 @@
     --btn-outline-hover-text: #ffffff;
 }
 
+/* Karanlık tema (Dark Mode) renk değişkenleri */
 [data-bs-theme="dark"] {
     --navbar-bg: #000000;
     --navbar-border: #262626;
@@ -66,7 +68,6 @@ body {
     padding: 0;
 }
 
-/* Typography */
 .theme-heading {
     color: var(--heading-color) !important;
 }
@@ -75,7 +76,6 @@ body {
     color: var(--text-muted-custom) !important;
 }
 
-/* Header & Navbar */
 .navbar-custom {
     background-color: var(--navbar-bg) !important;
     border-bottom: 2px solid var(--navbar-border) !important;
@@ -118,7 +118,6 @@ body {
     filter: drop-shadow(0 6px 20px rgba(255, 255, 255, 0.45));
 }
 
-/* Badges */
 .badge-author {
     background-color: var(--badge-bg) !important;
     color: var(--badge-text) !important;
@@ -126,7 +125,6 @@ body {
     padding: 6px 12px;
 }
 
-/* Cards & Content */
 .card-theme {
     background-color: var(--card-bg) !important;
     border: 1px solid var(--border-color) !important;
@@ -155,7 +153,6 @@ body {
     border-bottom: 1px solid var(--border-color) !important;
 }
 
-/* Form Controls */
 .input-theme {
     background-color: var(--input-bg) !important;
     border-color: var(--input-border) !important;
@@ -167,7 +164,6 @@ body {
     box-shadow: 0 0 0 0.25rem rgba(128, 128, 128, 0.25) !important;
 }
 
-/* Buttons */
 .btn-theme-primary {
     background-color: var(--btn-primary-bg) !important;
     border-color: var(--btn-primary-bg) !important;
@@ -195,7 +191,6 @@ body {
     color: var(--btn-outline-hover-text) !important;
 }
 
-/* Table */
 .table-theme {
     color: var(--text-color) !important;
 }
@@ -212,7 +207,6 @@ body {
     border-color: var(--border-color) !important;
 }
 
-/* Footer */
 .footer-custom {
     background-color: var(--footer-bg) !important;
     color: var(--footer-text) !important;
@@ -232,7 +226,6 @@ body {
     opacity: 1;
 }
 
-/* Pagination */
 .pagination-theme .page-link {
     background-color: var(--card-bg);
     color: var(--heading-color);
@@ -250,7 +243,6 @@ body {
     color: var(--btn-primary-text);
 }
 
-/* Dividers */
 .theme-divider {
     border-top: 3px solid var(--border-color) !important;
     opacity: 0.8;

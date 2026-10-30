@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ana Sayfa - SON GÜN</title>
     
-    <!-- Theme Auto-Detector for Bootstrap 5 -->
     <script>
         (function () {
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -13,14 +12,9 @@
         })();
     </script>
     
-    <!-- CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/site.css" />
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    
-    <!-- AOS Animation CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -54,7 +48,6 @@
     <hr class="w-50 mx-auto theme-divider" />
 </div>
 
-<!-- Kategori Filtreleme Butonları -->
 <div class="d-flex flex-wrap justify-content-center gap-2 mb-4" data-aos="fade-up">
     <button type="button" class="btn btn-sm rounded-pill px-3 py-2 btn-light text-dark fw-bold filter-btn active" data-category="all">
         <i class="fas fa-layer-group me-1"></i> Tümü
@@ -94,6 +87,38 @@
     <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="6" data-aos="fade-up" data-aos-delay="0">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
+                <img src="images/people/ataturk.jpg" 
+                     class="card-img-top w-100 h-100" 
+                     alt="Saat 9&#x27;u 5 Ge&#xE7;e Bir Milletin Yas&#x131;: Gazi Mustafa Kemal Atat&#xFC;rk&#x27;&#xFC;n Son G&#xFC;n&#xFC;" 
+                     style="object-fit: cover; object-position: top center; transition: transform 0.3s ease;" 
+                     onmouseover="this.style.transform='scale(1.04)'" 
+                     onmouseout="this.style.transform='scale(1)'" 
+                     onerror="this.src='images/logo.png'">
+            </div>
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-danger rounded-pill px-2 py-1">
+                        <i class="fas fa-tag me-1"></i>Hastal&#x131;k ve Do&#x11F;al Nedenler
+                    </span>
+                    <span class="badge bg-dark border border-secondary rounded-pill px-2 py-1 text-light">
+                        <i class="fas fa-skull me-1 text-danger"></i>Azrail
+                    </span>
+                </div>
+                <h5 class="card-title fw-bold theme-heading mt-2">Saat 9&#x27;u 5 Ge&#xE7;e Bir Milletin Yas&#x131;: Gazi Mustafa Kemal Atat&#xFC;rk&#x27;&#xFC;n Son G&#xFC;n&#xFC;</h5>
+                <p class="card-text text-muted-custom mt-2 flex-grow-1">
+                    T&#xFC;rkiye Cumhuriyeti&#x27;nin kurucusu ve ba&#x11F;&#x131;ms&#x131;zl&#x131;k m&#xFC;cadelesinin &#xF6;nderi Gazi Mustafa Kemal Atat&#xFC;rk, &#xF6;mr&#xFC;n&#xFC; cephelerde, mill...
+                </p>
+            </div>
+            <div class="card-footer card-footer-theme border-0 text-center pb-3">
+                <a href="details-21.html" class="btn btn-theme-outline w-100 py-2">
+                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="6" data-aos="fade-up" data-aos-delay="50">
+        <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
+            <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/marie_curie.jpg" 
                      class="card-img-top w-100 h-100" 
                      alt="Bilim U&#x11F;runa Adanm&#x131;&#x15F; Bir Hayat: Marie Curie&#x27;nin Radyasyonla Gelen Sonu" 
@@ -123,7 +148,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="5" data-aos="fade-up" data-aos-delay="50">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="5" data-aos="fade-up" data-aos-delay="100">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/nicholas_ii.jpg" 
@@ -155,7 +180,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="4" data-aos="fade-up" data-aos-delay="100">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="4" data-aos="fade-up" data-aos-delay="150">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/marilyn_monroe.jpg" 
@@ -187,7 +212,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="3" data-aos="fade-up" data-aos-delay="150">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="3" data-aos="fade-up" data-aos-delay="200">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/hemingway.jpg" 
@@ -219,7 +244,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="1" data-aos="fade-up" data-aos-delay="200">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="1" data-aos="fade-up" data-aos-delay="250">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/franz_ferdinand.jpg" 
@@ -251,7 +276,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="2" data-aos="fade-up" data-aos-delay="250">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="2" data-aos="fade-up" data-aos-delay="300">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/napoleon.jpg" 
@@ -283,7 +308,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="4" data-aos="fade-up" data-aos-delay="300">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="4" data-aos="fade-up" data-aos-delay="350">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/mozart.jpg" 
@@ -315,7 +340,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="5" data-aos="fade-up" data-aos-delay="350">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="5" data-aos="fade-up" data-aos-delay="400">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/joan_of_arc.jpg" 
@@ -347,7 +372,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="1" data-aos="fade-up" data-aos-delay="400">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="1" data-aos="fade-up" data-aos-delay="100">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/mlk.jpg" 
@@ -379,7 +404,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="2" data-aos="fade-up" data-aos-delay="100">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="2" data-aos="fade-up" data-aos-delay="150">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/rasputin.jpg" 
@@ -411,7 +436,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="3" data-aos="fade-up" data-aos-delay="150">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="3" data-aos="fade-up" data-aos-delay="200">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/van_gogh.jpg" 
@@ -443,7 +468,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="1" data-aos="fade-up" data-aos-delay="200">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="1" data-aos="fade-up" data-aos-delay="250">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/gandhi.jpg" 
@@ -475,7 +500,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="5" data-aos="fade-up" data-aos-delay="250">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="5" data-aos="fade-up" data-aos-delay="300">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/marie_antoinette.jpg" 
@@ -507,7 +532,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="6" data-aos="fade-up" data-aos-delay="300">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="6" data-aos="fade-up" data-aos-delay="350">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/alexander.jpg" 
@@ -539,7 +564,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="4" data-aos="fade-up" data-aos-delay="350">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="4" data-aos="fade-up" data-aos-delay="400">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/diana.jpg" 
@@ -571,7 +596,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="1" data-aos="fade-up" data-aos-delay="400">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="1" data-aos="fade-up" data-aos-delay="100">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/jfk.jpg" 
@@ -603,7 +628,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="3" data-aos="fade-up" data-aos-delay="100">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="3" data-aos="fade-up" data-aos-delay="150">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/cleopatra.jpg" 
@@ -635,7 +660,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="1" data-aos="fade-up" data-aos-delay="150">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="1" data-aos="fade-up" data-aos-delay="200">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/lincoln.jpg" 
@@ -667,7 +692,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="2" data-aos="fade-up" data-aos-delay="200">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="2" data-aos="fade-up" data-aos-delay="250">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/socrates.jpg" 
@@ -699,7 +724,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="1" data-aos="fade-up" data-aos-delay="250">
+    <div class="col-md-6 col-lg-4 mb-4 news-card-wrapper" data-category-id="1" data-aos="fade-up" data-aos-delay="300">
         <div class="card card-theme h-100 shadow-sm rounded-3 overflow-hidden d-flex flex-column">
             <div class="position-relative overflow-hidden" style="height: 310px; background-color: #161616;">
                 <img src="images/people/caesar.jpg" 
@@ -798,12 +823,9 @@
         </div>
     </footer>
     
-    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/site.js"></script>
-    
-    <!-- AOS Animation JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({

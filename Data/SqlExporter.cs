@@ -6,6 +6,7 @@ namespace SonGun.Data;
 
 public static class SqlExporter
 {
+    // Exports full database schema and existing data records into standalone executable SQL script
     public static void ExportToSql(AppDbContext context, string filePath)
     {
         var sb = new StringBuilder();
